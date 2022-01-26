@@ -11,6 +11,7 @@ class Ventana(Frame):
         # Configuración básica
         master.title("Organizador de archivos")
         master.geometry("500x500")
+        master.config(bg="#2c2b33")
 
         # Partes del programa
         titulo = Titulo(self)
