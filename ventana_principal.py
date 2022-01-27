@@ -19,6 +19,6 @@ class Ventana(Frame):
         botones = Boton(self)
 
         titulo.grid(row=1, column=1)
-        tabla.grid(row=2, column=2)
-        botones.grid(row=3, column=3)
+        tabla.grid(row=2, column=1)
+        botones.grid(row=3, column=1)
         
