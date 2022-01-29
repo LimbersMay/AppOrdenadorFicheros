@@ -8,7 +8,7 @@ class BotonRuta(Frame):
         
         # Configuraciones
         self.config(
-            bg="white",
+            bg="#2c2b33",
             width=500,
             height=50
         )
