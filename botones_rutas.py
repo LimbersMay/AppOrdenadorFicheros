@@ -16,3 +16,6 @@ class BotonRuta(Frame):
         # Partes del programa
         ruta_origen_label = Label(self, text="Ruta origen:")
         ruta_destino_label = Label(self, text="Ruta destino:")
+
+        ruta_origen_entry = Entry(self)
+        ruta_destino_entry = Entry(self)
