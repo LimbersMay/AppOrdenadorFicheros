@@ -10,3 +10,9 @@ class BotonRuta(Frame):
             width=500,
             height=50
         )
+
+        self.grid_propagate(False)
+
+        # Partes del programa
+        ruta_origen_label = Label(self, text="Ruta origen:")
+        ruta_destino_label = Label(self, text="Ruta destino:")
