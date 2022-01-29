@@ -14,15 +14,17 @@ class Ventana(Frame):
         master.geometry("500x500")
         master.config(bg="#2c2b33")
 
+        self.config(bg="#2c2b33")
+
         # Partes del programa
-        titulo = Titulo(self)
-        campos_rutas = BotonRuta(self)
-        tabla = Tabla(self)
-        botones = Boton(self)
+        self.titulo = Titulo(self)
+        self.campos_rutas = BotonRuta(self)
+        self.tabla = Tabla(self)
+        self.botones = Boton(self)
 
         # Posicionamiento
-        titulo.grid(row=1, column=1)
-        campos_rutas.grid(row=2, column=1)
-        tabla.grid(row=3, column=1)
-        botones.grid(row=4, column=1)
+        self.titulo.grid(row=1, column=1)
+        self.campos_rutas.grid(row=2, column=1)
+        self.tabla.grid(row=3, column=1)
+        self.botones.grid(row=4, column=1)
         
