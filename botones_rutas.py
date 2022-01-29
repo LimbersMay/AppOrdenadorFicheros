@@ -79,3 +79,16 @@ class BotonRuta(Frame):
         self.separador2.config(
             bg="#2c2b33"
         )
+
+        # Posicionamiento
+        # Ruta origen
+        self.ruta_origen_label.grid(row=1, column=0, sticky=W)
+        self.ruta_origen_entry.grid(row=1, column=1)
+        self.separador1.grid(row=1, column=2)
+        self.ruta_origen_button.grid(row=1, column=3)
+
+        # Ruta destino
+        self.ruta_destino_label.grid(row=2, column=0, sticky=W)
+        self.ruta_destino_entry.grid(row=2, column=1)
+        self.separador2.grid(row=2, column=2)
+        self.ruta_destino_button.grid(row=2, column=3)
