@@ -71,3 +71,11 @@ class BotonRuta(Frame):
             borderwidth=0,
             bg="cadetblue"
         )
+
+        # Separadores
+        self.separador1.config(
+            bg="#2c2b33"
+        )
+        self.separador2.config(
+            bg="#2c2b33"
+        )
