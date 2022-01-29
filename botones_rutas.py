@@ -29,4 +29,42 @@ class BotonRuta(Frame):
         self.ruta_destino_button = Button(self, text="Seleccionar ruta")
 
         # Posicionamiento
-    
+
+        # Estilos a los objetos
+        # ------------------------- Ruta origen ------------------------
+        self.ruta_origen_label.config(
+            fg="white",
+            font=("ocean", 11),
+            bg="#2c2b33"
+        )
+
+        self.ruta_origen_entry.config(
+            width=45,
+            bg="#e7e6e1",
+            borderwidth=0
+        )
+
+        self.ruta_origen_button.config(
+            fg="white",
+            borderwidth=0,
+            bg="cadetblue"
+        )
+
+        # ---------------- Ruta destino -----------------------
+        self.ruta_destino_label.config(
+            fg="white",
+            font=("ocean", 11),
+            bg="#2c2b33"
+        )
+
+        self.ruta_destino_entry.config(
+            width=45,
+            bg="#e7e6e1",
+            borderwidth=0
+        )
+
+        self.ruta_destino_button.config(
+            fg="white",
+            borderwidth=0,
+            bg="cadetblue"
+        )
