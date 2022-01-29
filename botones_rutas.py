@@ -1,6 +1,6 @@
 from tkinter import *
 
-from matplotlib.pyplot import grid
+from matplotlib.pyplot import grid, text
 
 class BotonRuta(Frame):
     def __init__(self, master):
@@ -19,6 +19,9 @@ class BotonRuta(Frame):
         # Textos de las rutas
         self.ruta_origen_label = Label(self, text="Ruta origen:")
         self.ruta_destino_label = Label(self, text="Ruta destino:")
+
+        self.separador1 = Label(self, text="")
+        self.separador2 = Label(self, text="")
 
         # Campos para introducir las rutas
         self.ruta_origen_entry = Entry(self)
