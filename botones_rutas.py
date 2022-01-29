@@ -1,7 +1,5 @@
 from tkinter import *
 
-from matplotlib.pyplot import grid, text
-
 class BotonRuta(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
