@@ -19,3 +19,6 @@ class BotonRuta(Frame):
 
         ruta_origen_entry = Entry(self)
         ruta_destino_entry = Entry(self)
+
+        ruta_origen_button = Button(self, text="Seleccionar ruta")
+        ruta_destino_button = Button(self, text="Seleccionar ruta")
