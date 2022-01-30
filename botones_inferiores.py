@@ -28,3 +28,8 @@ class Boton(Frame):
             bg="#2c2b33",
             borderwidth=0
         )
+
+        # Posicionamiento de los objetos
+        self.operacion_label.grid(row=0, column=0)
+        self.iniciar_button.grid(row=0, column=1)
+        self.configuraciones_button.grid(row=0, column=2)
