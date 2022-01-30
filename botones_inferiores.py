@@ -33,3 +33,6 @@ class Boton(Frame):
         self.operacion_label.grid(row=0, column=0)
         self.iniciar_button.grid(row=0, column=1)
         self.configuraciones_button.grid(row=0, column=2)
+
+        self.grid_propagate(False)
+        self.grid_columnconfigure(1, weight=1)
