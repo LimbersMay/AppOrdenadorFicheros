@@ -5,9 +5,9 @@ class Boton(Frame):
         Frame.__init__(self, master)
 
         self.config(
-        width=500,
+        width=450,
         height=50,
-        bg="#e7e6e1"
+        bg="#2c2b33"
         )
 
         # Partes del programa
