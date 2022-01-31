@@ -11,7 +11,7 @@ class Ventana(Frame):
         
         # Configuración básica
         master.title("Organizador de archivos")
-        master.geometry("500x270")
+        master.geometry("500x350")
         master.config(bg="#2c2b33")
 
         self.config(bg="#2c2b33")
