@@ -7,7 +7,8 @@ class BotonRuta(Frame):
         # Atributos de clase
         self.ruta_origen_variable = StringVar()
         self.ruta_destino_variable = StringVar()
-        
+        self.observado = None
+
         # Configuraciones
         self.config(
             bg="#2c2b33",
@@ -94,3 +95,6 @@ class BotonRuta(Frame):
         self.ruta_destino_entry.grid(row=2, column=1)
         self.separador2.grid(row=2, column=2)
         self.ruta_destino_button.grid(row=2, column=3)
+    
+    def agregar_observado(self, observado):
+        self.observado = observado
