@@ -3,7 +3,12 @@ from tkinter import *
 class BotonRuta(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
-        
+
+        # Atributos de clase
+        self.ruta_origen_variable = StringVar()
+        self.ruta_destino_variable = StringVar()
+        self.observado = None
+
         # Configuraciones
         self.config(
             bg="#2c2b33",
@@ -22,8 +27,8 @@ class BotonRuta(Frame):
         self.separador2 = Label(self, text="")
 
         # Campos para introducir las rutas
-        self.ruta_origen_entry = Entry(self)
-        self.ruta_destino_entry = Entry(self)
+        self.ruta_origen_entry = Entry(self, textvariable=self.ruta_origen_variable)
+        self.ruta_destino_entry = Entry(self, textvariable=self.ruta_destino_variable)
 
         # Botones para seleccionar las rutas
         self.ruta_origen_button = Button(self, text="Seleccionar ruta")
@@ -90,3 +95,10 @@ class BotonRuta(Frame):
         self.ruta_destino_entry.grid(row=2, column=1)
         self.separador2.grid(row=2, column=2)
         self.ruta_destino_button.grid(row=2, column=3)
+    
+    def agregar_observado(self, observado):
+        self.observado = observado
+    
+    def actualizar(self):
+        self.ruta_origen_variable.set(self.observado.obtener_ruta_origen())
+        self.ruta_destino_variable.set(self.observado.obtener_ruta_destino())
