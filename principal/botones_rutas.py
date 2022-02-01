@@ -98,3 +98,7 @@ class BotonRuta(Frame):
     
     def agregar_observado(self, observado):
         self.observado = observado
+    
+    def actualizar(self):
+        self.ruta_origen_variable.set(self.observado.obtener_ruta_origen())
+        self.ruta_destino_variable.set(self.observado.obtener_ruta_destino())
