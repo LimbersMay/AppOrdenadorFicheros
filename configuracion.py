@@ -9,7 +9,7 @@ class Configuracion:
     # Método para notificar a los observadores que un cambio ha ocurrido en la configuración 
     def notificar(self):
         for observador in self.observadores:
-            observador.update()
+            observador.actualizar()
     
     # Método para añadir un observador
     def agregar_observador(self, observador):
