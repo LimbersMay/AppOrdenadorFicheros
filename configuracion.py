@@ -14,3 +14,7 @@ class Configuracion:
     # Método para añadir un observador
     def agregar_observador(self, observador):
         self.observadores.append(observador)
+    
+    # Método para eliminar un observador
+    def eliminar_observador(self, observador):
+        self.observadores.remove(observador)
