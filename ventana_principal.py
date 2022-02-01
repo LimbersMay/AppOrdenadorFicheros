@@ -1,9 +1,9 @@
 from tkinter import *
 
-from botones_inferiores import Boton
-from botones_rutas import BotonRuta
-from tabla import Tabla
-from titulo import Titulo
+from principal.botones_inferiores import Boton
+from principal.botones_rutas import BotonRuta
+from principal.tabla import Tabla
+from principal.titulo import Titulo
 
 class Ventana(Frame):
     def __init__(self, master):
