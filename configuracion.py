@@ -10,3 +10,7 @@ class Configuracion:
     def notificar(self):
         for observador in self.observadores:
             observador.update()
+    
+    # Método para añadir un observador
+    def agregar_observador(self, observador):
+        self.observadores.append(observador)
