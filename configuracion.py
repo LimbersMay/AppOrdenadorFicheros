@@ -26,3 +26,11 @@ class Configuracion:
     # Método para modificar la ruta de origen
     def modificar_ruta_origen(self, ruta):
         self.fichero.modificar_json("directorios", "rutaOrigen", ruta)
+    
+    # Método para obtener la ruta de destino
+    def obtener_ruta_destino(self):
+        return self.fichero_obtener_valor("directorios", "rutaDestino")
+    
+    # Método para modificar la ruta de destino
+    def modificar_ruta_destino(self, ruta):
+        self.fichero.modificar_json("directorios", "rutaDestino", ruta)
