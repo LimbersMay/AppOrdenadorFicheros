@@ -1,5 +1,5 @@
-# Objeto observado por las demás clases para obtener las configuraciones del json
+# Clase que se encarga de leer el fichero de configuración del Json y extraerá los datos
 
 class Fichero:
-    def __init__(self, observador):
-        self.observador = observador
+    def __init__(self, ruta):
+        self.ruta = ruta
