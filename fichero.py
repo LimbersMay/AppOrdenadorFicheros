@@ -17,3 +17,11 @@ class Fichero:
         # Guardamos la información nuevamente en el fichero Json
         with open(self.ruta, "w") as fichero:
             fichero.write(json.dumps(self.cargar, indent=4))
+    
+    def obtener_valor(self, clave_1, clave_2):
+        # Abrimos el fichero y cargamos la información en formato json
+        with open(self.ruta, "r") as fichero:
+            self.cargar = json.loads(fichero.read())
+
+        # Devolvemos la información solicitada
+        return self.cargar[clave_1][clave_2]
