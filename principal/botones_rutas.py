@@ -1,4 +1,5 @@
 from tkinter import *
+from tkinter import filedialog
 
 class BotonRuta(Frame):
     def __init__(self, master):
@@ -31,8 +32,8 @@ class BotonRuta(Frame):
         self.ruta_destino_entry = Entry(self, textvariable=self.ruta_destino_variable)
 
         # Botones para seleccionar las rutas
-        self.ruta_origen_button = Button(self, text="Seleccionar ruta")
-        self.ruta_destino_button = Button(self, text="Seleccionar ruta")
+        self.ruta_origen_button = Button(self, text="Seleccionar ruta", command=self.obtener_ruta_origen_ventana)
+        self.ruta_destino_button = Button(self, text="Seleccionar ruta", command=self.obtener_ruta_destino_ventana)
 
         # Posicionamiento
 
@@ -102,3 +103,12 @@ class BotonRuta(Frame):
     def actualizar(self):
         self.ruta_origen_variable.set(self.observado.obtener_ruta_origen())
         self.ruta_destino_variable.set(self.observado.obtener_ruta_destino())
+
+    # Funciones para obtener la ruta de origen abriendo una ventana de dialogo de windows para seleccionar la carpeta
+    def obtener_ruta_origen_ventana(self):
+        archivo = filedialog.askdirectory(title="seleccionar ruta")
+        self.observado.escribir_ruta_origen(archivo)
+    
+    def obtener_ruta_destino_ventana(self):
+        archivo = filedialog.askdirectory(title="seleccionar ruta")
+        self.observado.escribir_ruta_destino(archivo)
