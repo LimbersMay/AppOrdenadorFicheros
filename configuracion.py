@@ -34,3 +34,11 @@ class Configuracion:
     # Método para modificar la ruta de destino
     def modificar_ruta_destino(self, ruta):
         self.fichero.modificar_json("directorios", "rutaDestino", ruta)
+    
+    # Método para obtener el modo de ordenamiento
+    def obtener_modo_ordenamiento(self):
+        return self.fichero.obtener_valor("ordenamiento", "operacion")
+    
+    # Método para modificar el modo de ordenamiento
+    def modificar_modo_ordenamiento(self, modo):
+        self.fichero.modificar_json("ordenamiento", "operacion", modo)
