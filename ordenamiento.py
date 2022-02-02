@@ -16,4 +16,5 @@ class Ordenamiento:
     def ordenar_recursos(self):
         pass
 
-    
+    def determinar_similitud(self, nombre_archivo, nombre_carpeta):
+        return fuzz.token_set_ratio(nombre_archivo, nombre_carpeta)
