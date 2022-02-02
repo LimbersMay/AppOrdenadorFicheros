@@ -2,6 +2,7 @@
 
 from configuracion import Configuracion
 from manipulacionarchivo import ManipulacionArchivo
+from fuzzywuzzy import fuzz
 
 class Ordenamiento:
     def __init__(self):
