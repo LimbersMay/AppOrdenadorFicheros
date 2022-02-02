@@ -9,12 +9,16 @@ class Boton(Frame):
         height=50,
         bg="#2c2b33"
         )
+        
+        # Texto que cambiará según la configuración
+        self.operacion_variable = StringVar()
 
         # Partes del programa
-        self.operacion_label = Label(self, text="copiar")
+        self.operacion_label = Label(self, textvariable=self.operacion_variable)
         self.iniciar_button = Button(self, text="Iniciar")
         self.imagen = PhotoImage(file="recursos/icono.png")
         self.configuraciones_button = Button(self, text="", image=self.imagen)
+        self.observado = None
 
         # Configuracion de estilos de los objetos
         self.iniciar_button.config(
