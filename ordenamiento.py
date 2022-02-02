@@ -5,4 +5,7 @@ from manipulacionarchivo import ManipulacionArchivo
 
 class Ordenamiento:
     def __init__(self):
-        pass
+        
+        # Atributos de la clase necesarios para realizar las operaciones
+        self.configuracion = None
+        self.manipulacion_archivo = ManipulacionArchivo()
