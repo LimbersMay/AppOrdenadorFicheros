@@ -6,3 +6,13 @@ class ManipulacionArchivo:
         self.ruta_origen = ruta_origen + "/"
         self.nombre_archivo = nombre_archivo
         self.ruta_destino = None
+
+    # Métodos necesarios de la clase
+    def mover_fichero(self):
+        try:
+            shutil.move(self.ruta_origen + self.nombre_archivo, self.ruta_destino + self.nombre_archivo)
+        except:
+            return
+
+    def copiar_fichero(self):
+        shutil.copy(self.ruta_origen + self.nombre_archivo, self.ruta_destino + self.nombre_archivo)
