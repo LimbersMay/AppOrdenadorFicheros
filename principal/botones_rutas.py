@@ -107,8 +107,8 @@ class BotonRuta(Frame):
     # Funciones para obtener la ruta de origen abriendo una ventana de dialogo de windows para seleccionar la carpeta
     def obtener_ruta_origen_ventana(self):
         archivo = filedialog.askdirectory(title="seleccionar ruta")
-        self.observado.escribir_ruta_origen(archivo)
+        self.observado.modificar_ruta_origen(archivo)
     
     def obtener_ruta_destino_ventana(self):
         archivo = filedialog.askdirectory(title="seleccionar ruta")
-        self.observado.escribir_ruta_destino(archivo)
+        self.observado.modificar_ruta_destino(archivo)
