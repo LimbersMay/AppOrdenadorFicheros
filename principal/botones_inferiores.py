@@ -42,7 +42,7 @@ class Boton(Frame):
         self.grid_columnconfigure(1, weight=1)
     
     # Método para agregar al objeto al que observaremos para obtener los cambios de la configuración 
-    def agregar_observador(self, observado):
+    def agregar_observado(self, observado):
         self.observado = observado
     
     # Método para actualizar la variable de texto de la operación
