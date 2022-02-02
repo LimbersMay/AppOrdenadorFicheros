@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import filedialog
 
-class BotonRuta(Frame):
+class CampoRuta(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
 

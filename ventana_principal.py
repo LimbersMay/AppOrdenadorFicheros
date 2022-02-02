@@ -2,7 +2,7 @@ from tkinter import *
 from configuracion import Configuracion
 
 from principal.botones_inferiores import Boton
-from principal.botones_rutas import BotonRuta
+from principal.campos_rutas import CampoRuta
 from principal.tabla import Tabla
 from principal.titulo import Titulo
 
@@ -22,7 +22,7 @@ class Ventana(Frame):
 
         # Partes del programa
         self.titulo = Titulo(self)
-        self.campos_rutas = BotonRuta(self)
+        self.campos_rutas = CampoRuta(self)
         self.tabla = Tabla(self)
         self.botones = Boton(self)
 
