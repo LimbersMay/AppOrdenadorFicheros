@@ -9,3 +9,9 @@ class Ordenamiento:
         # Atributos de la clase necesarios para realizar las operaciones
         self.configuracion = None
         self.manipulacion_archivo = ManipulacionArchivo()
+
+    # Algoritmo que se encargará de ordenar todos los archivos
+    def ordenar_recursos(self):
+        pass
+
+    
