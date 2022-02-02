@@ -18,3 +18,9 @@ class Ordenamiento:
 
     def determinar_similitud(self, nombre_archivo, nombre_carpeta):
         return fuzz.token_set_ratio(nombre_archivo, nombre_carpeta)
+
+    # Algoritmo que se encargará de buscar la carpeta con la que más similitud tenga con nuestro archivo
+    def busqueda_lineal_arreglo(self, arreglo_carpetas, valor):
+        similitudes = [self.determinar_similitud(carpeta, valor) for carpeta in arreglo_carpetas]
+        
+        return similitudes.index(max(similitudes))
