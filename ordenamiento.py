@@ -24,7 +24,7 @@ class Ordenamiento:
     def busqueda_lineal_arreglo(self, arreglo_carpetas, valor):
         similitudes = [self.determinar_similitud(carpeta, valor) for carpeta in arreglo_carpetas]
 
-        return similitudes.index(max(similitudes))
+        return arreglo_carpetas[similitudes.index(max(similitudes))]
 
     # Algoritmo de búsqueda binaria para encontrar la carpeta que más similitud tenga con el archivo
     def busqueda_binaria(self, arreglo_carpetas, valor):
