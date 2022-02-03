@@ -46,3 +46,9 @@ class Tabla(Frame):
         self.informacion_filas = self.configuracion.obtener_informacion_ordenamiento()
         
         self.actualizar_tabla(self.informacion_filas)
+    
+    def actualizar_tabla(self, informacion_filas):
+        self.tabla.delete(*self.tabla.get_children())
+
+        for informacion_fila in informacion_filas:
+            self.tabla.insert("", "end", text=informacion_fila[0], values=(informacion_fila[1], informacion_fila[2]))
