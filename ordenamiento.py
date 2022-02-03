@@ -32,6 +32,20 @@ class Ordenamiento:
                 if os.path.basename(directorio) in self.archivos_diccionario[clave] or bandera:
                     self.archivos_diccionario[clave].append(self.busqueda_lineal_arreglo(carpetas, clave))
             bandera = False
+        
+        # Movemos los archivos a la ruta de destino
+        for clave in self.archivos_diccionario:
+            # Obtenemos la ruta de destino uniendo todas las carpetas con la que el archivo tuvo más similitud 
+            ruta_destino = self.configuracion.obtener_ruta_destino() + "/" + "/".join(self.archivos_diccionario[clave])
+
+            ruta_origen = self.configuracion.obtener_ruta_origen()
+            
+            # Movemos el archivo a la ruta de destino
+            self.manipulacion_archivo.set_nombre_archivo(clave)
+            self.manipulacion_archivo.set_ruta_origen(ruta_origen)
+            self.manipulacion_archivo.set_ruta_destino(ruta_destino)
+
+            self.manipulacion_archivo.copiar_fichero()
             
     def determinar_similitud(self, nombre_archivo, nombre_carpeta):
         return fuzz.token_set_ratio(nombre_archivo, nombre_carpeta)
