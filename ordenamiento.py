@@ -1,6 +1,5 @@
 # Clase que se encargará de ordenar todos los archivos que se encuentren en la ruta deseada a la ruta de destino
 
-from manipulacionarchivo import ManipulacionArchivo
 import shutil
 from fuzzywuzzy import fuzz
 from walklevel import *
@@ -10,7 +9,6 @@ class Ordenamiento:
         
         # Atributos de la clase necesarios para realizar las operaciones
         self.configuracion = None
-        self.manipulacion_archivo = ManipulacionArchivo()
 
     # Algoritmo que se encargará de ordenar todos los archivos
     def ordenar_recursos(self):
@@ -41,20 +39,16 @@ class Ordenamiento:
             self.archivos_diccionario[clave].pop()
 
             # Obtenemos la ruta de destino uniendo todas las carpetas con la que el archivo tuvo más similitud 
-            ruta_destino = self.configuracion.obtener_ruta_destino() + "/" + "/".join(self.archivos_diccionario[clave])
+            ruta_destino = self.configuracion.obtener_ruta_destino() + "/" + "/".join(self.archivos_diccionario[clave]) + "/" + clave
 
-            ruta_origen = self.configuracion.obtener_ruta_origen()
+            ruta_origen = self.configuracion.obtener_ruta_origen() + "/" + clave
             
-            # Movemos el archivo a la ruta de destino
-            self.manipulacion_archivo.set_nombre_archivo(clave)
-            self.manipulacion_archivo.set_ruta_origen(ruta_origen)
-            self.manipulacion_archivo.set_ruta_destino(ruta_destino)
-
-            if self.configuracion.obtener_modo_ordenamiento() == "mover":
-                self.manipulacion_archivo.mover_fichero()
+            # Movemos o copiamos el archivo a la ruta de destino
+            if self.configuracion.obtener_modo_ordenamiento().capitalize() == "Mover":
+                shutil.move(ruta_origen, ruta_destino)
             
-            elif self.configuracion.obtener_modo_ordenamiento() == "copiar":
-                self.manipulacion_archivo.copiar_fichero()           
+            elif self.configuracion.obtener_modo_ordenamiento().capitalize() == "Copiar":
+                shutil.copy(ruta_origen, ruta_destino)           
 
     def agregar_configuracion(self, configuracion):
         self.configuracion = configuracion
