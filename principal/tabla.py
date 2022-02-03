@@ -43,9 +43,10 @@ class Tabla(Frame):
         self.configuracion = observado
     
     def actualizar(self):
-        self.informacion_filas = self.configuracion.obtener_informacion_ordenamiento()
+        if hasattr(self.configuracion, "informacion"):
+            self.informacion_filas = self.configuracion.obtener_informacion_ordenamiento()
         
-        self.actualizar_tabla(self.informacion_filas)
+            self.actualizar_tabla(self.informacion_filas)
     
     def actualizar_tabla(self, informacion_filas):
         self.tabla.delete(*self.tabla.get_children())
