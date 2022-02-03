@@ -16,6 +16,22 @@ class Ordenamiento:
 
         # Enlistamos todas los archivos que se encuentren en la ruta de origen
         self.archivos = os.listdir(self.configuracion.obtener_ruta_origen())
+
+        # Diccionario que contendrá los nombres de las carpetas con los que el archivo tuvo más similitud
+        self.archivos_diccionario = dict((clave, []) for clave in self.archivos)
+
+        bandera = True
+
+        # Recorremos el árbol de directorios de la ruta de destino
+        for directorio, carpetas, archivos in walklevel(self.configuracion.obtener_ruta_destino(), 2):
+            for clave in self.archivos_diccionario:
+                if not carpetas: # Si el directorio no tiene carpetas, pasamos al siguiente
+                    continue
+                
+                # Comprobamos si la carpeta actual fue uno de los que más similitud tuvo con el archivo
+                if os.path.basename(directorio) in self.archivos_diccionario[clave] or bandera:
+                    self.archivos_diccionario[clave].append(self.busqueda_lineal_arreglo(carpetas, clave))
+            bandera = False
             
     def determinar_similitud(self, nombre_archivo, nombre_carpeta):
         return fuzz.token_set_ratio(nombre_archivo, nombre_carpeta)
