@@ -51,7 +51,7 @@ class Ordenamiento:
             elif self.configuracion.obtener_modo_ordenamiento() == "copiar":
                 self.manipulacion_archivo.copiar_fichero()
     
-    def enviar_configuracion(self, configuracion):
+    def agregar_configuracion(self, configuracion):
         self.configuracion = configuracion
             
     def determinar_similitud(self, nombre_archivo, nombre_carpeta):
