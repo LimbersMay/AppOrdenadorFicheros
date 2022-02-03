@@ -44,15 +44,32 @@ class Ordenamiento:
 
             # Obtenemos la ruta de destino uniendo todas las carpetas con la que el archivo tuvo más similitud 
             ruta_destino = self.ruta_destino + "/" + "/".join(self.archivos_diccionario[clave]) + "/" + clave
-
             ruta_origen = self.ruta_origen + "/" + clave
             
             # Movemos o copiamos el archivo a la ruta de destino
             if self.configuracion.obtener_modo_ordenamiento().capitalize() == "Mover":
-                shutil.move(ruta_origen, ruta_destino)
+                # shutil.move(ruta_origen, ruta_destino)
+                pass
             
             elif self.configuracion.obtener_modo_ordenamiento().capitalize() == "Copiar":
-                shutil.copy(ruta_origen, ruta_destino)           
+                # shutil.copy(ruta_origen, ruta_destino)
+                pass
+        
+        # Generamos los datos que se mostrarán en la tabla de interfaz gráfica
+        lista_informacion = [[] for _ in range(len(self.archivos))] # Lista que contendrá la información de cada archivo
+        contador = 0
+        for clave in self.archivos_diccionario:
+            nombre_archivo = clave
+            nombre_carpeta = self.archivos_diccionario[clave][-1]
+            similitud = self.determinar_similitud(nombre_archivo, nombre_carpeta)
+
+            lista_informacion[contador].append(nombre_archivo)
+            lista_informacion[contador].append(nombre_carpeta)
+            lista_informacion[contador].append(similitud)
+
+            contador += 1
+        
+        self.configuracion.enviar_informacion_ordenamiento(lista_informacion)
 
     def agregar_configuracion(self, configuracion):
         self.configuracion = configuracion
