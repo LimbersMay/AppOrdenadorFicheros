@@ -1,5 +1,6 @@
 from tkinter import *
 from configuracion import Configuracion
+from ordenamiento import Ordenamiento
 
 from principal.botones_inferiores import Boton
 from principal.campos_rutas import CampoRuta
@@ -19,6 +20,7 @@ class Ventana(Frame):
 
         # Objeto al que observaremos para obtener los cambios de la configuración
         self.configuracion = Configuracion('json/configuracion.json')
+        self.ordenamiento = Ordenamiento()
 
         # Partes del programa
         self.titulo = Titulo(self)
