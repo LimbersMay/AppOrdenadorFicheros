@@ -23,7 +23,7 @@ class Ordenamiento:
         bandera = True
 
         # Recorremos el árbol de directorios de la ruta de destino
-        for directorio, carpetas, archivos in walklevel(self.configuracion.obtener_ruta_destino(), 2):
+        for directorio, carpetas, archivos in walklevel(self.configuracion.obtener_ruta_destino(), 1):
             for clave in self.archivos_diccionario:
                 if not carpetas: # Si el directorio no tiene carpetas, pasamos al siguiente
                     continue
@@ -35,6 +35,10 @@ class Ordenamiento:
         
         # Movemos los archivos a la ruta de destino
         for clave in self.archivos_diccionario:
+
+            # Eliminamos el último elemento de la lista de coincidencias para que coincida con la profundidad
+            self.archivos_diccionario[clave].pop()
+
             # Obtenemos la ruta de destino uniendo todas las carpetas con la que el archivo tuvo más similitud 
             ruta_destino = self.configuracion.obtener_ruta_destino() + "/" + "/".join(self.archivos_diccionario[clave])
 
@@ -49,8 +53,8 @@ class Ordenamiento:
                 self.manipulacion_archivo.mover_fichero()
             
             elif self.configuracion.obtener_modo_ordenamiento() == "copiar":
-                self.manipulacion_archivo.copiar_fichero()
-    
+                self.manipulacion_archivo.copiar_fichero()           
+
     def agregar_configuracion(self, configuracion):
         self.configuracion = configuracion
             
