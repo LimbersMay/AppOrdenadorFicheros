@@ -19,10 +19,14 @@ class Ordenamiento:
         # Diccionario que contendrá los nombres de las carpetas con los que el archivo tuvo más similitud
         self.archivos_diccionario = dict((clave, []) for clave in self.archivos)
 
+        # Obtenemos las rutas de origen y destino del objeto configuración para evitar acceder al fichero de configuración cada vez que se necesite
+        self.ruta_origen = self.configuracion.obtener_ruta_origen()
+        self.ruta_destino = self.configuracion.obtener_ruta_destino()
+
         bandera = True
 
         # Recorremos el árbol de directorios de la ruta de destino
-        for directorio, carpetas, archivos in walklevel(self.configuracion.obtener_ruta_destino(), 1):
+        for directorio, carpetas, archivos in walklevel(self.ruta_destino, 1):
             for clave in self.archivos_diccionario:
                 if not carpetas: # Si el directorio no tiene carpetas, pasamos al siguiente
                     continue
@@ -39,9 +43,9 @@ class Ordenamiento:
             self.archivos_diccionario[clave].pop()
 
             # Obtenemos la ruta de destino uniendo todas las carpetas con la que el archivo tuvo más similitud 
-            ruta_destino = self.configuracion.obtener_ruta_destino() + "/" + "/".join(self.archivos_diccionario[clave]) + "/" + clave
+            ruta_destino = self.ruta_destino + "/" + "/".join(self.archivos_diccionario[clave]) + "/" + clave
 
-            ruta_origen = self.configuracion.obtener_ruta_origen() + "/" + clave
+            ruta_origen = self.ruta_origen + "/" + clave
             
             # Movemos o copiamos el archivo a la ruta de destino
             if self.configuracion.obtener_modo_ordenamiento().capitalize() == "Mover":
