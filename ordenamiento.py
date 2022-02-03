@@ -1,9 +1,8 @@
 # Clase que se encargará de ordenar todos los archivos que se encuentren en la ruta deseada a la ruta de destino
 
-from configuracion import Configuracion
 from manipulacionarchivo import ManipulacionArchivo
 from fuzzywuzzy import fuzz
-from walklevel import walklevel
+from walklevel import *
 
 class Ordenamiento:
     def __init__(self):
@@ -14,8 +13,10 @@ class Ordenamiento:
 
     # Algoritmo que se encargará de ordenar todos los archivos
     def ordenar_recursos(self):
-        pass
 
+        # Enlistamos todas los archivos que se encuentren en la ruta de origen
+        self.archivos = os.listdir(self.configuracion.obtener_ruta_origen())
+            
     def determinar_similitud(self, nombre_archivo, nombre_carpeta):
         return fuzz.token_set_ratio(nombre_archivo, nombre_carpeta)
 
