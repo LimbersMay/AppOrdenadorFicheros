@@ -48,12 +48,12 @@ class Ordenamiento:
             
             # Movemos o copiamos el archivo a la ruta de destino
             if self.configuracion.obtener_modo_ordenamiento().capitalize() == "Mover":
-                # shutil.move(ruta_origen, ruta_destino)
-                pass
+                shutil.move(ruta_origen, ruta_destino)
+                
             
             elif self.configuracion.obtener_modo_ordenamiento().capitalize() == "Copiar":
-                # shutil.copy(ruta_origen, ruta_destino)
-                pass
+                shutil.copy(ruta_origen, ruta_destino)
+                
         
         # Generamos los datos que se mostrarán en la tabla de interfaz gráfica
         lista_informacion = [[] for _ in range(len(self.archivos))] # Lista que contendrá la información de cada archivo
