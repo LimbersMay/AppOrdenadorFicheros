@@ -51,3 +51,13 @@ class Configuracion:
 
         # Notificamos a los observadores que ha habido un cambio en la configuración
         self.notificar()
+    
+    # Método que recibirá la información que la tabla necesita (archivo, carpeta, similitud)
+    def enviar_informacion_ordenamiento(self, arreglo_tuplas):
+        self.informacion = arreglo_tuplas
+
+        self.notificar()
+    
+    # Método para obtener la información que la tabla necesita
+    def obtener_informacion_ordenamiento(self):
+        return self.informacion
