@@ -20,7 +20,7 @@ class Tabla(Frame):
         self.tabla_scrollbar = Scrollbar(self)
         self.tabla_scrollbar.pack(side=RIGHT, fill=Y)
 
-        self.tabla = Treeview(self, columns=("Carpeta", "Similitud"), yscrollcommand=self.tabla_scrollbar.set, selectmode="none")
+        self.tabla = Treeview(self, columns=("Carpeta", "Similitud"), yscrollcommand=self.tabla_scrollbar.set, selectmode="browse")
 
         # Creamos las columnas
         self.tabla.column("#0", width=150, anchor=CENTER)
