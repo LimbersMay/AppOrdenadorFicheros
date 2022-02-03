@@ -31,11 +31,13 @@ class Ventana(Frame):
         # Enviamos el objeto al que observaremos para obtener los cambios de la configuración
         self.botones.agregar_observado(self.configuracion)
         self.botones.agregar_algoritmo(self.ordenamiento)
+        self.tabla.agregar_observado(self.configuracion)
         self.campos_rutas.agregar_observado(self.configuracion)
 
         # Le indicamos al objeto observado quiénes son sus observadores
         self.configuracion.agregar_observador(self.botones)
         self.configuracion.agregar_observador(self.campos_rutas)
+        self.configuracion.agregar_observador(self.tabla)
 
         # Le mandamos al objeto ordenamiento el objeto que contiene todas las configuraciones
         self.ordenamiento.agregar_configuracion(self.configuracion)
