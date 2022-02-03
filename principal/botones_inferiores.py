@@ -4,6 +4,8 @@ class Boton(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
 
+        self.algoritmo_ordenamiento = None
+
         self.config(
         width=450,
         height=50,
@@ -48,3 +50,7 @@ class Boton(Frame):
     # Método para actualizar la variable de texto de la operación
     def actualizar(self):
         self.operacion_variable.set(self.observado.obtener_modo_ordenamiento())
+    
+    # Método que recibirá el objeto que contiene el algoritmo de ordenamiento
+    def agregar_algoritmo(self, algoritmo):
+        self.algoritmo_ordenamiento = algoritmo
