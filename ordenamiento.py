@@ -45,7 +45,7 @@ class Ordenamiento:
             self.manipulacion_archivo.set_ruta_origen(ruta_origen)
             self.manipulacion_archivo.set_ruta_destino(ruta_destino)
 
-            self.manipulacion_archivo.copiar_fichero()
+            self.manipulacion_archivo.mover_fichero()
             
     def determinar_similitud(self, nombre_archivo, nombre_carpeta):
         return fuzz.token_set_ratio(nombre_archivo, nombre_carpeta)
