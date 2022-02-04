@@ -11,7 +11,7 @@ class Ordenamiento:
         self.configuracion = None
 
     # Algoritmo que se encargará de ordenar todos los archivos
-    def ordenar_recursos(self):
+    def ordenar_recursos(self, estado = 0):
 
         # Enlistamos todas los archivos que se encuentren en la ruta de origen
         self.archivos = os.listdir(self.configuracion.obtener_ruta_origen())
@@ -37,22 +37,25 @@ class Ordenamiento:
             bandera = False
         
         # Movemos los archivos a la ruta de destino
-        for clave in self.archivos_diccionario:
+        # estado = 0 -> El usuario desea que los archivos se ordenen
+        # Estado = 1 -> El usuario desea que solo se analicen los directorios
+        if estado == 0:
+            for clave in self.archivos_diccionario:
 
-            # Eliminamos el último elemento de la lista de coincidencias para que coincida con la profundidad
-            self.archivos_diccionario[clave].pop()
+                # Eliminamos el último elemento de la lista de coincidencias para que coincida con la profundidad
+                self.archivos_diccionario[clave].pop()
 
-            # Obtenemos la ruta de destino uniendo todas las carpetas con la que el archivo tuvo más similitud 
-            ruta_destino = self.ruta_destino + "/" + "/".join(self.archivos_diccionario[clave]) + "/" + clave
-            ruta_origen = self.ruta_origen + "/" + clave
-            
-            # Movemos o copiamos el archivo a la ruta de destino
-            if self.configuracion.obtener_modo_ordenamiento().capitalize() == "Mover":
-                shutil.move(ruta_origen, ruta_destino)
+                # Obtenemos la ruta de destino uniendo todas las carpetas con la que el archivo tuvo más similitud 
+                ruta_destino = self.ruta_destino + "/" + "/".join(self.archivos_diccionario[clave]) + "/" + clave
+                ruta_origen = self.ruta_origen + "/" + clave
                 
-            
-            elif self.configuracion.obtener_modo_ordenamiento().capitalize() == "Copiar":
-                shutil.copy(ruta_origen, ruta_destino)
+                # Movemos o copiamos el archivo a la ruta de destino
+                if self.configuracion.obtener_modo_ordenamiento().capitalize() == "Mover":
+                    shutil.move(ruta_origen, ruta_destino)
+                    
+                
+                elif self.configuracion.obtener_modo_ordenamiento().capitalize() == "Copiar":
+                    shutil.copy(ruta_origen, ruta_destino)
                 
         
         # Generamos los datos que se mostrarán en la tabla de interfaz gráfica
