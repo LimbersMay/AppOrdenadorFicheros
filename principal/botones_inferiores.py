@@ -18,7 +18,7 @@ class Boton(Frame):
         # Partes del programa
         self.operacion_label = Label(self, textvariable=self.operacion_variable)
         self.iniciar_button = Button(self, text="Iniciar", command=self.iniciar)
-        self.analizar_button = Button(self, text="Analizar")
+        self.analizar_button = Button(self, text="Analizar", command=self.analizar)
         self.imagen = PhotoImage(file="recursos/icono.png")
         self.configuraciones_button = Button(self, text="", image=self.imagen)
         self.observado = None
@@ -63,3 +63,6 @@ class Boton(Frame):
     # Método que usará el método del objeto algoritmo para ordenar todos los archivos
     def iniciar(self):
         self.algoritmo_ordenamiento.ordenar_recursos()
+    
+    def analizar(self):
+        self.algoritmo_ordenamiento.ordenar_recursos(1)
