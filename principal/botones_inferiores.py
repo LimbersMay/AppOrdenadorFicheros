@@ -18,6 +18,7 @@ class Boton(Frame):
         # Partes del programa
         self.operacion_label = Label(self, textvariable=self.operacion_variable)
         self.iniciar_button = Button(self, text="Iniciar", command=self.iniciar)
+        self.analizar_button = Button(self, text="Analizar")
         self.imagen = PhotoImage(file="recursos/icono.png")
         self.configuraciones_button = Button(self, text="", image=self.imagen)
         self.observado = None
@@ -29,6 +30,12 @@ class Boton(Frame):
             bg="cadetblue"
         )
 
+        self.analizar_button.config(
+            fg="white",
+            borderwidth=0,
+            bg="darkred"
+        )
+
         self.configuraciones_button.config(
             activebackground="#2c2b33", 
             bg="#2c2b33",
@@ -36,13 +43,11 @@ class Boton(Frame):
         )
 
         # Posicionamiento de los objetos
-        self.operacion_label.grid(row=0, column=0)
-        self.iniciar_button.grid(row=0, column=1)
-        self.configuraciones_button.grid(row=0, column=2)
+        self.operacion_label.place(x=0, y=10)
+        self.iniciar_button.place(x=190, y=10)
+        self.analizar_button.place(x=230, y=10)
+        self.configuraciones_button.place(x=400, y=2)
 
-        self.grid_propagate(False)
-        self.grid_columnconfigure(1, weight=1)
-    
     # Método para agregar al objeto al que observaremos para obtener los cambios de la configuración 
     def agregar_observado(self, observado):
         self.observado = observado
