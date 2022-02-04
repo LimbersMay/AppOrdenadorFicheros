@@ -56,7 +56,12 @@ class Ordenamiento:
                 
                 elif self.configuracion.obtener_modo_ordenamiento().capitalize() == "Copiar":
                     shutil.copy(ruta_origen, ruta_destino)
-                
+        
+        # Si el usuario desea que solo se analicen los directorios
+        elif estado == 1:
+            # Borramos todos los elementos finales de los arreglos
+            for clave in self.archivos_diccionario:
+                self.archivos_diccionario[clave].pop()
         
         # Generamos los datos que se mostrarán en la tabla de interfaz gráfica
         lista_informacion = [[] for _ in range(len(self.archivos))] # Lista que contendrá la información de cada archivo
