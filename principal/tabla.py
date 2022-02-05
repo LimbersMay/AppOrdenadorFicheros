@@ -1,8 +1,6 @@
 from tkinter import *
 from tkinter.ttk import Treeview
 
-from h11 import InformationalResponse
-
 class Tabla(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
