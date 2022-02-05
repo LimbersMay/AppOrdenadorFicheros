@@ -32,6 +32,11 @@ class VentanaConfiguracion(Frame):
         self.algoritmo_opcion.enviar_lista_opciones(["Busqueda lineal", "Busqueda binaria"])
         self.criterio_opcion.enviar_lista_opciones(["Similitud", "Extension"])
 
+        # Le enviamos a los objetos opción la configuración actual del usuario
+        self.modo_opcion.obtener_lista_opciones().set(self.configuracion.obtener_modo_ordenamiento())
+        self.algoritmo_opcion.obtener_lista_opciones().set(self.configuracion.obtener_algoritmo())
+        self.criterio_opcion.obtener_lista_opciones().set(self.configuracion.obtener_criterio())
+
         # Posicionamiento de los objetos
         self.titulo.grid(row=1, column=1)
         self.modo_opcion.grid(row=2, column=1)
