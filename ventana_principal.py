@@ -1,11 +1,12 @@
 from tkinter import *
-from configuracion import Configuracion
-from ordenamiento import Ordenamiento
+from backend.configuracion import Configuracion
+from backend.ordenamiento import Ordenamiento
 
 from principal.botones_inferiores import Boton
 from principal.campos_rutas import CampoRuta
 from principal.tabla import Tabla
 from principal.titulo import Titulo
+
 
 class Ventana(Frame):
     def __init__(self, master):

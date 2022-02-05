@@ -1,5 +1,5 @@
 # Clase observada por todas las demás clases que necesitan obtener la información del json de configuración
-from fichero import *
+from backend.fichero import Fichero
 
 class Configuracion:
     def __init__(self, ruta):
