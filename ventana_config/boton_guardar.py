@@ -10,3 +10,21 @@ class BotonGuardar(Frame):
             width=370,
             height=50
         )
+
+        # Partes del programa
+        self.boton = Button(self, text="Guardar")
+        self.separador = Label(self, text="")
+
+        # Configuración de estilo del objeto
+        self.boton.config(
+            fg="white",
+            borderwidth=0,
+            bg="cadetblue"
+        )
+
+        self.separador.config(
+            bg="#2c2b33"
+        )
+
+        # posicionamiento de los objetos
+        self.boton.place(x=160, y=9)
