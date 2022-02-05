@@ -4,6 +4,9 @@ class BotonGuardar(Frame):
     def __init__(self, master):
         Frame.__init__(self, master)
 
+        # Atributos de la clase
+        self.configuracion = None
+
         # Configuraciones del frame
         self.config(
             bg="#2c2b33",
@@ -28,3 +31,6 @@ class BotonGuardar(Frame):
 
         # posicionamiento de los objetos
         self.boton.place(x=160, y=9)
+    
+    def enviar_configuracion(self, configuracion):
+        self.configuracion = configuracion
