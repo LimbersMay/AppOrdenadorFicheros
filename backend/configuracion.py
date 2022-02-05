@@ -52,6 +52,18 @@ class Configuracion:
         # Notificamos a los observadores que ha habido un cambio en la configuración
         self.notificar()
     
+    def obtener_algoritmo(self):
+        return self.fichero.obtener_valor("algoritmo", "operacion")
+    
+    def modificar_algoritmo(self, algoritmo):
+        self.fichero.modificar_json("algoritmo", "operacion", algoritmo)
+
+    def obtener_criterio(self):
+        return self.fichero.obtener_valor("criterio", "criterioOrdenamiento")
+    
+    def modificar_criterio(self, criterio):
+        self.fichero.modificar_json("criterio", "criterioOrdenamiento", criterio)
+
     # Método que recibirá la información que la tabla necesita (archivo, carpeta, similitud)
     def enviar_informacion_ordenamiento(self, arreglo_tuplas):
         self.informacion = arreglo_tuplas
