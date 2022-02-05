@@ -26,24 +26,47 @@ class Ordenamiento:
         bandera = True
 
         # Recorremos el árbol de directorios de la ruta de destino
-        for directorio, carpetas, archivos in walklevel(self.ruta_destino, 1):
-            for clave in self.archivos_diccionario:
-                # Filtramos todos los elementos de las carpetas, agregamos todas son excepción de las carpetas temporales
-                carpetas_filtradas = [carpeta for carpeta in carpetas if not carpeta.startswith('.')]
+        for directorio, carpetas, _ in walklevel(self.ruta_destino, 2):
+            # Filtramos todos los elementos de las carpetas, omitiendo las carpetas temporales
+            carpetas_filtradas = [carpeta for carpeta in carpetas if not carpeta.startswith('.')]
 
+            # Determinamos si hay carpetas cuyos permisos no tengamos
+            elementos_similares = list(set(carpetas_filtradas) & set(rutas_ignorar))
+
+            # De haber carpetas cuyos permisos no tengamos, las eliminamos de la lista de carpetas filtradas
+            [carpetas_filtradas.remove(elemento) for elemento in elementos_similares]
+
+            for clave in self.archivos_diccionario:
+    
                 # Comprobamos si la carpeta actual fue uno de los que más similitud tuvo con el archivo
                 comprobante = os.path.basename(directorio) in self.archivos_diccionario[clave]
 
                 if not carpetas_filtradas: # Si el directorio no tiene carpetas, pasamos al siguiente
-                    if comprobante:
-                        self.archivos_diccionario[clave].append(" ")
                     continue
                 
                 if comprobante or bandera:
                     self.archivos_diccionario[clave].append(self.busqueda_lineal_arreglo(carpetas_filtradas, clave))
 
             bandera = False
-        
+
+        # Analizamos el diccionario para ver si la cantidad de carpetas que almacenan coindice con la profundidad de la búsqueda
+        rutas_sin_permiso = []
+        for clave in self.archivos_diccionario:
+            lista_carpetas = self.archivos_diccionario[clave]
+
+            if not len(lista_carpetas) == 2:
+                # Intentamos listar la carpeta para ver si tenemos permisos sobre ella, de no poder listarla, debemos evitar esta carpeta en la siguiente búsqueda
+                try:
+                    os.listdir(self.ruta_destino + "/" + "/".join(lista_carpetas))
+                except PermissionError:
+                    rutas_sin_permiso.append(lista_carpetas[-1])
+  
+        # Comprobamos si el arreglo de rutas_sin_permiso tiene elementos, de tener elementos significa que nos encontramos con carpetas cuyos permisos no tenemos
+        if rutas_sin_permiso:
+            rutas_sin_permiso.extend(rutas_ignorar)
+            self.ordenar_recursos(estado, rutas_sin_permiso)
+            return
+
         # Movemos los archivos a la ruta de destino
         # estado = 0 -> El usuario desea que los archivos se ordenen
         # Estado = 1 -> El usuario desea que solo se analicen los directorios
@@ -51,7 +74,6 @@ class Ordenamiento:
             for clave in self.archivos_diccionario:
 
                 # Eliminamos el último elemento de la lista de coincidencias para que coincida con la profundidad
-                self.archivos_diccionario[clave].pop()
 
                 # Obtenemos la ruta de destino uniendo todas las carpetas con la que el archivo tuvo más similitud 
                 ruta_destino = self.ruta_destino + "/" + "/".join(self.archivos_diccionario[clave]) + "/" + clave
@@ -66,10 +88,6 @@ class Ordenamiento:
                     shutil.copy(ruta_origen, ruta_destino)
         
         # Si el usuario desea que solo se analicen los directorios
-        elif estado == 1:
-            # Borramos todos los elementos finales de los arreglos
-            for clave in self.archivos_diccionario:
-                self.archivos_diccionario[clave].pop()
         
         # Generamos los datos que se mostrarán en la tabla de interfaz gráfica
         lista_informacion = [[] for _ in range(len(self.archivos))] # Lista que contendrá la información de cada archivo
