@@ -11,7 +11,7 @@ class Ordenamiento:
         self.configuracion = None
 
     # Algoritmo que se encargará de ordenar todos los archivos
-    def ordenar_recursos(self, estado = 0):
+    def ordenar_recursos(self, estado = 0, rutas_ignorar = []):
 
         # Enlistamos todas los archivos que se encuentren en la ruta de origen
         self.archivos = os.listdir(self.configuracion.obtener_ruta_origen())
@@ -28,12 +28,20 @@ class Ordenamiento:
         # Recorremos el árbol de directorios de la ruta de destino
         for directorio, carpetas, archivos in walklevel(self.ruta_destino, 1):
             for clave in self.archivos_diccionario:
-                if not carpetas: # Si el directorio no tiene carpetas, pasamos al siguiente
+                # Filtramos todos los elementos de las carpetas, agregamos todas son excepción de las carpetas temporales
+                carpetas_filtradas = [carpeta for carpeta in carpetas if not carpeta.startswith('.')]
+
+                # Comprobamos si la carpeta actual fue uno de los que más similitud tuvo con el archivo
+                comprobante = os.path.basename(directorio) in self.archivos_diccionario[clave]
+
+                if not carpetas_filtradas: # Si el directorio no tiene carpetas, pasamos al siguiente
+                    if comprobante:
+                        self.archivos_diccionario[clave].append(" ")
                     continue
                 
-                # Comprobamos si la carpeta actual fue uno de los que más similitud tuvo con el archivo
-                if os.path.basename(directorio) in self.archivos_diccionario[clave] or bandera:
-                    self.archivos_diccionario[clave].append(self.busqueda_lineal_arreglo(carpetas, clave))
+                if comprobante or bandera:
+                    self.archivos_diccionario[clave].append(self.busqueda_lineal_arreglo(carpetas_filtradas, clave))
+
             bandera = False
         
         # Movemos los archivos a la ruta de destino
