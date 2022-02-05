@@ -27,3 +27,7 @@ class Opcion(Frame):
         # Posicionamiento de las partes del frame
         self.texto.grid(row=0, column=0)
         self.lista_combobox.grid(row=0, column=1)
+    
+    # Método para enviarle al objeto Combobox la lista de opciones
+    def enviar_lista_opciones(self, lista_opciones):
+        self.lista_combobox.config(values=lista_opciones)
