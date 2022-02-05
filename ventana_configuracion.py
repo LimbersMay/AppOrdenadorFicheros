@@ -42,3 +42,7 @@ class VentanaConfiguracion(Frame):
         self.modo_opcion.grid(row=2, column=1)
         self.algoritmo_opcion.grid(row=3, column=1)
         self.criterio_opcion.grid(row=4, column=1)
+    
+    # Método para enviar el objeto de configuración
+    def enviar_configuracion(self, configuracion):
+        self.configuracion = configuracion
