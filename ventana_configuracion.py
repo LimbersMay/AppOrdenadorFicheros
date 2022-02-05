@@ -9,7 +9,7 @@ class VentanaConfiguracion(Frame):
 
         # Configuraciones del master
         master.title("Configuraciones")
-        master.geometry("370x350")
+        master.geometry("370x150")
         master.config(bg="#2c2b33")
 
         # Configuraciones del frame
