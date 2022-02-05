@@ -6,6 +6,7 @@ class BotonGuardar(Frame):
 
         # Atributos de la clase
         self.configuracion = None
+        self.lista_opciones = []
 
         # Configuraciones del frame
         self.config(
@@ -35,6 +36,6 @@ class BotonGuardar(Frame):
     def enviar_configuracion(self, configuracion):
         self.configuracion = configuracion
     
-    # Enviamso el objeto combobox al frame
+    # Enviamos los objetos combobox al frame
     def enviar_lista_opciones(self, lista_opciones):
-        self.lista_opciones = lista_opciones
+        self.lista_opciones.append(lista_opciones)
