@@ -16,7 +16,7 @@ class BotonGuardar(Frame):
         )
 
         # Partes del programa
-        self.boton = Button(self, text="Guardar")
+        self.boton = Button(self, text="Guardar", command=self.guardar_configuracion)
         self.separador = Label(self, text="")
 
         # Configuración de estilo del objeto
@@ -39,3 +39,8 @@ class BotonGuardar(Frame):
     # Enviamos los objetos combobox al frame
     def enviar_lista_opciones(self, lista_opciones):
         self.lista_opciones.append(lista_opciones)
+    
+    def guardar_configuracion(self):
+        self.configuracion.modificar_modo_ordenamiento(self.lista_opciones[0].get())
+        self.configuracion.modificar_algoritmo(self.lista_opciones[1].get())
+        self.configuracion.modificar_criterio(self.lista_opciones[2].get())
