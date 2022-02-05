@@ -1,4 +1,5 @@
 from tkinter import *
+from ventana_configuracion import *
 
 class Boton(Frame):
     def __init__(self, master):
@@ -20,7 +21,7 @@ class Boton(Frame):
         self.iniciar_button = Button(self, text="Iniciar", command=self.iniciar)
         self.analizar_button = Button(self, text="Analizar", command=self.analizar)
         self.imagen = PhotoImage(file="recursos/icono.png")
-        self.configuraciones_button = Button(self, text="", image=self.imagen)
+        self.configuraciones_button = Button(self, text="", image=self.imagen, command=self.abrir_configuraciones)
         self.observado = None
 
         # Configuracion de estilos de los objetos
@@ -66,3 +67,9 @@ class Boton(Frame):
     
     def analizar(self):
         self.algoritmo_ordenamiento.ordenar_recursos(1)
+
+    def abrir_configuraciones(self):
+        root = Toplevel()
+        ventana = VentanaConfiguracion(root, self.observado)
+        ventana.pack()
+        ventana.mainloop()
