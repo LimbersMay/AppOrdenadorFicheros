@@ -38,3 +38,7 @@ class Opcion(Frame):
     # Método para enviarle al objeto Combobox la lista de opciones
     def enviar_lista_opciones(self, lista_opciones):
         self.lista_combobox.config(values=lista_opciones)
+    
+    # Método para obtener la lista de opciones del objeto Combobox
+    def obtener_lista_opciones(self):
+        return self.lista_combobox
