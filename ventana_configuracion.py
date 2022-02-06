@@ -1,9 +1,8 @@
 from tkinter import *
-from tkinter.ttk import Combobox
 from ventana_config.titulo import Titulo
 from ventana_config.opcion import Opcion
 from ventana_config.boton_guardar import BotonGuardar
-from backend.configuracion import Configuracion
+
 
 class VentanaConfiguracion(Frame):
     def __init__(self, master, configuracion):
