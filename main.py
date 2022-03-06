@@ -1,6 +1,5 @@
 from ventana_principal import *
 
-# Función main
 def main():
 
     root = Tk()
